@@ -1,36 +1,75 @@
-// Select color input
-// Select size input
+$(document).ready(animatecolor);
+// Changes the page background color
+function animatecolor() {
+  setInterval(changeColor, 1000);
+}
 
-// When size is submitted by the user, call makeGrid()
+// Selects a background color from a set of random colors at intervals
+function changeColor() {
+  var bgcolors = ['#fff', '#f0532c', '#3db161', '#e8c0ff', '#bd9986'];
+  var textcolors = ['#5cd1f3', '#835cf3', '#8d38e4', '#f35c5c', '#b1f35c'];
+  var bgcolor = bgcolors[Math.floor(Math.random() * bgcolors.length)];
+  var textcolor = textcolors[Math.floor(Math.random() * textcolors.length)];
+  $('body').animate({ backgroundColor: bgcolor }, 1500);
+  $('.header').animate({ color: textcolor }, 500);
+}
 
-
+// When size and background is submitted by the user, call makeGrid() and tableBackground()
 $('#sizePicker').on('submit', function (e) {
-  e.preventDefault()
+  e.preventDefault();
   makeGrid();
+  tableBackground();
 });
 
+// Sets the background of the table
+function tableBackground() {
+  let tableBackgroundColor = $('#tableColorPicker').val();
+  $('table').css('background-color', tableBackgroundColor);
+}
+
+// Clears the table
+function resetTable() {
+  $("#pixelCanvas").html('');
+}
+
 function makeGrid() {
-  // Sets the height and width of the grid to the user input
+  // Sets the height and width of the table based on the user input
   let inputHeight = $('#inputHeight').val();
   let inputWidth = $('#inputWidth').val();
 
-  $('#pixelCanvas').html('');
+  resetTable();
 
-  for (let i = 1; i <= inputWidth; i++) {
-    $('#pixelCanvas').append('<tr id = row' + i + '></tr>');
-    for (let j = 1; j <= inputHeight; j++) {
-      $('#row' + i).append('<td id=coloumn' + j + '></td>');
+  for (let i = 1; i <= inputHeight; i++) {
+    // Appends column to the table based on the user selection
+    $('#pixelCanvas').append('<tr id = coloumn' + i + '></tr>');
+    for (let j = 1; j <= inputWidth; j++) {
+      // Appends set of row to each column 
+      $('#coloumn' + i).append('<td id=row' + j + '></td>');
     }
   }
 
-  $('td').click(fillBox);
+  // Calls the fillbox function on mousedown
+  // Fills the box on mousedrag(mousedown + mousemove)
+  $("tr td").mousedown(fillBox);
+
+  // Adds color property to the box
+  function addcolor() {
+    let color = $('#colorPicker').val();
+    $(this).css('background-color', color);
+  }
+  // Sets the box color property to the background color
+  function removeColor() {
+    let tableBackgroundColor = $('#tableColorPicker').val();
+    $(this).css('background-color', tableBackgroundColor)
+  }
 
   function fillBox() {
-    // Stores the value of the selected color into color
-    let color = $("#colorPicker").val();
-
-    // Checks for the background color style property on the selected box
-    ($(this).attr("style")) ? $(this).removeAttr("style") : $(this).attr("style", `background-color:${color}`);
-
+    let color = $('#colorPicker').val();
+    $(this).css('background-color', color);
+    $('tr td').bind("mousemove", addcolor).mouseup(function () {
+      $('td').unbind('mousemove');
+    });
+    // Sets the box color property to the background color on doubleclick
+    $('tr td').dblclick(removeColor)
   }
 }
