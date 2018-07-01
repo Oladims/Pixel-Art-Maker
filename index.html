@@ -37,12 +37,29 @@
         <p>
             <button type="submit" class="button">Submit</button>
             <button type="reset" class="button resetbutton" onclick="resetTable()">Reset</button>
+            <button id="myBtn" class="button">Instructions</button>
+
         </p>
     </form>
 
     <h2>Pick Color</h2>
     <input type="color" id="colorPicker">
+    <!-- Trigger/Open The Modal -->
 
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <ol>
+                <li>Set the height and width of the grid</li>
+                <li>Set the background color of the grid from the color picker</li>
+                <li>Pick the color from the ColorPicker color palette</li>
+                <li>Draw using the mouse by clicking and moving</li>
+                <li>Double click on a cell to set it's color back to the background color</li>
+                <li>Press reset button to clear the grid</li>
+            </ol>
+        </div>
+    </div>
     <h2>Design Canvas</h2>
     <table id="pixelCanvas"></table>
 
