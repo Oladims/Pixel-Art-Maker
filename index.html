@@ -8,27 +8,47 @@
 </head>
 
 <body>
-    <h1>Lab: Pixel Art Maker</h1>
+    <h1>
+        <span class="header" style="color: #4a90e2">L</span>
+        <span style="color: #93e28e">a</span>
+        <span class="header" style="color: #e270cf">b</span>
+        <span class="header" style="color: #e2d45e">:</span>
+        <span style="color: #5be2cc">P</span>
+        <span class="header" style="color: #ac84e2">i</span>
+        <span class="header" style="color: #e233a3">x</span>
+        <span style="color: #2ae2dc">e</span>
+        <span class="header" style="color: #e25258">l</span>
+        <span style="color: #6ae297">A</span>
+        <span style="color: #e2d595">r</span>
+        <span class="header" style="color: #7ee27d">t</span>
+        <span style="color: #bf92e2">M</span>
+        <span style="color: #3cbfe2">a</span>
+        <span class="header" style="color: #e24f5a">k</span>
+        <span class="header" style="color: #dde29d">e</span>
+        <span style="color: #8fe278">r</span>
+    </h1>
 
     <h2>Choose Grid Size</h2>
     <form id="sizePicker">
         Grid Height:
         <input type="number" id="inputHeight" name="height" min="1" value="1"> Grid Width:
-        <input type="number" id="inputWidth" name="width" min="1" value="1">
-        <input type="submit">
+        <input type="number" id="inputWidth" name="width" min="1" value="1"> Background Color:
+        <input type="color" id="tableColorPicker">
+        <p>
+            <button type="submit" class="button">Submit</button>
+            <button type="reset" class="button resetbutton" onclick="resetTable()">Reset</button>
+        </p>
     </form>
 
-    <h2>Pick A Color</h2>
+    <h2>Pick Color</h2>
     <input type="color" id="colorPicker">
 
     <h2>Design Canvas</h2>
     <table id="pixelCanvas"></table>
 
-    <canvas id="myCanvas"></canvas>
-
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="designs.js"></script>
 </body>
 
