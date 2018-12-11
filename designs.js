@@ -1,7 +1,7 @@
 $(document).ready(animatecolor);
 // Changes the page background color
 function animatecolor() {
-  setInterval(changeColor, 1000);
+  setInterval(changeColor, 3000);
 }
 
 // Selects a background color from a set of random colors at intervals
