@@ -10,9 +10,9 @@ function changeColor() {
   var textcolors = ['#5cd1f3', '#835cf3', '#8d38e4', '#f35c5c', '#b1f35c'];
   var bgcolor = bgcolors[Math.floor(Math.random() * bgcolors.length)];
   var textcolor = textcolors[Math.floor(Math.random() * textcolors.length)];
-  $('body').animate({ backgroundColor: bgcolor }, 1500);
-  $('.header').animate({ color: textcolor }, 500);
-  $('#myModal').animate({ color: textcolor }, 1500);
+  $('body').animate({ backgroundColor: bgcolor }, 3000);
+  $('.header').animate({ color: textcolor }, 2000);
+  $('#myModal').animate({ color: textcolor }, 3000);
 
 
 }
